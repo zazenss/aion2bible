@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kanon's Aion 2 PvE progression guide as a chapter-by-chapter reference site.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Kanon's Aion 2 Bible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: sticky chapter rail on the left, a single reading column on the right; rail collapses to a horizontal strip on phones. */
+:root{
+  --bg:#0d1120; --surface:#141a2d; --surface-2:#1b2239; --line:#283150;
+  --fg:#e5e8f3; --muted:#98a0bf; --accent:#d8b36a; --accent-soft:rgba(216,179,106,.13); --accent-ink:#1a1408;
+  --g-gray:#a0a6b4; --g-green:#71d083; --g-blue:#62adf2; --g-yellow:#ebc94e; --g-orange:#f2914a;
+  --warn:#f0a35a; --warn-soft:rgba(240,163,90,.12);
+  --glow:rgba(120,150,255,.16);
+  --f-display:"Marcellus SC","Marcellus",Georgia,"Times New Roman",serif;
+  --f-head:"Marcellus",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f1f2f7; --surface:#ffffff; --surface-2:#e8eaf3; --line:#d3d7e5;
+    --fg:#1a1f33; --muted:#59607e; --accent:#8a5d10; --accent-soft:rgba(138,93,16,.10); --accent-ink:#ffffff;
+    --g-gray:#6b7180; --g-green:#2b8a3e; --g-blue:#1d6cc0; --g-yellow:#9c7c06; --g-orange:#bf5c12;
+    --warn:#b25a0e; --warn-soft:rgba(178,90,14,.09);
+    --glow:rgba(90,110,220,.12);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f1f2f7; --surface:#ffffff; --surface-2:#e8eaf3; --line:#d3d7e5;
+  --fg:#1a1f33; --muted:#59607e; --accent:#8a5d10; --accent-soft:rgba(138,93,16,.10); --accent-ink:#ffffff;
+  --g-gray:#6b7180; --g-green:#2b8a3e; --g-blue:#1d6cc0; --g-yellow:#9c7c06; --g-orange:#bf5c12;
+  --warn:#b25a0e; --warn-soft:rgba(178,90,14,.09);
+  --glow:rgba(90,110,220,.12);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+@media (min-width:960px){html{scroll-padding-top:24px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+strong{font-weight:700}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+
+.shell{display:grid;grid-template-columns:1fr;max-width:1200px;margin:0 auto}
+@media (min-width:960px){.shell{grid-template-columns:250px minmax(0,1fr);gap:48px;padding-inline:24px}}
+
+/* Chapter rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.rail-inner{display:flex;gap:4px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+.rail-inner::-webkit-scrollbar{display:none}
+.rail-title{display:none}
+.rail a{flex:none;display:flex;align-items:baseline;gap:8px;padding:6px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:14px;white-space:nowrap}
+.rail a .n{font-family:var(--f-mono);font-size:11px;color:var(--muted);opacity:.8}
+.rail a:hover{color:var(--fg)}
+.rail a.active{background:var(--accent-soft);color:var(--accent)}
+.rail a.active .n{color:var(--accent)}
+@media (min-width:960px){
+  .rail{align-self:start;height:100vh;border-bottom:0;padding-block:32px}
+  .rail-inner{flex-direction:column;overflow:visible;padding:0}
+  .rail-title{display:block;font-family:var(--f-display);font-size:13px;letter-spacing:.14em;color:var(--muted);margin:0 12px 12px}
+  .rail a{border-radius:6px;white-space:normal;font-size:15px}
+  .rail a .n{width:20px}
+}
+
+main{min-width:0;padding-inline:16px;padding-block:0 80px}
+@media (min-width:960px){main{padding-inline:0}}
+.col{max-width:780px}
+
+/* Hero */
+.hero{position:relative;padding-block:56px 40px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.hero::before{content:"";position:absolute;inset:0 -16px;background:radial-gradient(60% 80% at 20% 0%,var(--glow),transparent 70%);pointer-events:none}
+.hero>*{position:relative}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,7vw,68px);line-height:1.02;letter-spacing:.01em;margin:14px 0 16px;text-wrap:balance}
+.lede{font-size:19px;color:var(--muted);max-width:60ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+
+/* Sections */
+section.ch{padding-block:48px 8px;border-bottom:1px solid var(--line)}
+.ch-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.ch-num{font-family:var(--f-mono);font-size:13px;color:var(--accent);letter-spacing:.08em;flex:none}
+h2{font-family:var(--f-head);font-weight:400;font-size:clamp(28px,4.2vw,38px);line-height:1.12;margin:0;text-wrap:balance}
+.ch-sum{color:var(--muted);margin:6px 0 24px;max-width:62ch}
+h3{font-family:var(--f-head);font-weight:400;font-size:23px;margin:36px 0 10px;text-wrap:balance}
+h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 8px;font-weight:600}
+p{margin:0 0 14px;max-width:66ch}
+ul,ol{margin:0 0 16px;padding-left:22px;max-width:66ch}
+li{margin-bottom:5px}
+li::marker{color:var(--muted)}
+
+/* Callouts */
+.note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:16px 0;max-width:66ch}
+.note .lbl{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:4px}
+.note p:last-child,.note ul:last-child{margin-bottom:0}
+.note.warn{background:var(--warn-soft);border-color:transparent}
+.note.warn .lbl{color:var(--warn)}
+
+/* Tables */
+.scroll{overflow-x:auto;margin:12px 0 20px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2);white-space:nowrap}
+td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+td .sub{display:block;color:var(--muted);font-size:13px}
+
+/* Chips */
+.pct{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pct.rare{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.grade{display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap}
+.grade::before{content:"";width:9px;height:9px;border-radius:2px;background:currentColor;transform:rotate(45deg)}
+.g-gray{color:var(--g-gray)}.g-green{color:var(--g-green)}.g-blue{color:var(--g-blue)}.g-yellow{color:var(--g-yellow)}.g-orange{color:var(--g-orange)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.tag.keep{color:var(--g-green);background:color-mix(in srgb,var(--g-green) 14%,transparent)}
+.tag.lost{color:var(--warn);background:var(--warn-soft)}
+.tag.conv{color:var(--g-blue);background:color-mix(in srgb,var(--g-blue) 14%,transparent)}
+
+/* Cheat sheet */
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px;margin:28px 0 8px}
+.cheat .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.cheat .card h4{margin-top:0}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-weight:600;font-size:15px}
+.chain .gt{color:var(--muted);font-family:var(--f-mono);font-weight:400}
+
+/* Slot grid (stat lines) */
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,225px),1fr));gap:10px;margin:14px 0 20px}
+.slot{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
+.slot h5{font-family:var(--f-head);font-weight:400;font-size:18px;margin:0 0 8px}
+.slot ol{list-style:none;padding:0;margin:0;font-size:15px}
+.slot li{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-top:1px dashed var(--line);margin:0}
+.slot li:first-child{border-top:0}
+.slot li.rest{color:var(--muted);font-style:italic}
+
+/* Ladder */
+.ladder{list-style:none;padding:0;margin:14px 0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:8px;max-width:none}
+.ladder li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0}
+.ladder .lv{font-family:var(--f-display);font-size:28px;color:var(--accent);line-height:1}
+.ladder .lv small{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-right:4px}
+.ladder p{font-size:14px;margin:6px 0 0;color:var(--muted)}
+
+/* Tiles legend */
+.tiles{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.tile{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:15px}
+.tile i{width:16px;height:16px;border-radius:3px;flex:none}
+
+/* Wings */
+.wings{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px;margin:14px 0 20px}
+.wing{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.wing.hot{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.wing h5{font-family:var(--f-head);font-weight:400;font-size:18px;margin:0 0 2px}
+.wing .why{font-size:13px;color:var(--accent);margin-bottom:6px}
+.wing .grp{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:8px 0 2px}
+.wing ul{list-style:none;padding:0;margin:0;font-size:14px}
+.wing li{margin:0;padding:1px 0;display:flex;justify-content:space-between;gap:8px}
+.wing li .up{font-family:var(--f-mono);font-size:11px;color:var(--g-green)}
+.wing li .fx{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+
+/* Efficiency chart */
+.eff{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 12px;margin:16px 0 22px}
+.eff-cap{font-size:13px;color:var(--muted);margin-bottom:14px}
+.eff-row{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;align-items:center;gap:12px;padding:6px 0}
+.eff-row .nm{font-size:14px;font-weight:600}
+.eff-row .val{font-family:var(--f-mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.track{position:relative;height:14px;background:var(--surface-2);border-radius:3px}
+.track .solid{position:absolute;inset-block:0;left:0;background:color-mix(in srgb,var(--accent) 55%,transparent);border-radius:3px 0 0 3px}
+.track .range{position:absolute;inset-block:0;background:var(--accent);border-radius:0 3px 3px 0}
+.axis{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;gap:12px;margin-top:4px}
+.axis .ticks{position:relative;height:18px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.axis .ticks span{position:absolute;transform:translateX(-50%)}
+.axis .ticks span:first-child{transform:none}
+.axis .ticks span:last-child{transform:translateX(-100%)}
+@media (max-width:560px){
+  .eff-row{grid-template-columns:1fr 84px;row-gap:4px}
+  .eff-row .nm{grid-column:1/-1}
+  .eff-row .track{grid-column:1}
+  .axis{grid-template-columns:1fr 84px}
+  .axis>span:first-child{display:none}
+}
+
+/* Formula */
+.formula{font-family:var(--f-mono);font-size:13.5px;line-height:1.75;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;overflow-x:auto;white-space:pre;margin:12px 0 18px;color:var(--fg)}
+.formula .op{color:var(--accent)}
+.formula .c{color:var(--muted)}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:14px 0;max-width:780px}
+summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style-position:inside}
+details>div{padding:0 16px 14px}
+
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:12px 0}
+.cols2>div{min-width:0}
+
+footer{padding-block:40px 20px;color:var(--muted);font-size:14px}
+footer p{max-width:70ch}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="rail" aria-label="Chapters">
+    <div class="rail-inner" id="rail">
+      <div class="rail-title">Chapters</div>
+      <a href="#start"><span class="n">00</span>Start here</a>
+      <a href="#gear"><span class="n">01</span>Gear &amp; basics</a>
+      <a href="#closer"><span class="n">02</span>Gear slots up close</a>
+      <a href="#lines"><span class="n">03</span>Ideal stat lines</a>
+      <a href="#skills"><span class="n">04</span>Skills</a>
+      <a href="#enhance"><span class="n">05</span>Enhancement</a>
+      <a href="#arcana"><span class="n">06</span>Arcana</a>
+      <a href="#daevanion"><span class="n">07</span>Daevanion boards</a>
+      <a href="#genus"><span class="n">08</span>Pet Genus</a>
+      <a href="#wings"><span class="n">09</span>Wings</a>
+      <a href="#closet"><span class="n">10</span>Closet</a>
+      <a href="#stats"><span class="n">11</span>How stats work</a>
+      <a href="#builds"><span class="n">12</span>Class builds</a>
+    </div>
+  </nav>
+
+  <main>
+  <div class="col">
+
+  <header class="hero" id="start">
+    <div class="eyebrow">Aion 2 · PvE progression · Global</div>
+    <h1>Kanon's Aion 2 Bible</h1>
+    <p class="lede">Everything that goes into character progression, from what each line on your gear does to the full damage formula. Built from Kanon's guide and organized so you can find a number fast.</p>
+    <div class="meta">
+      <span>Last update note <b>Oct 4, 2026</b></span>
+      <span>Author <b>Kanon</b> · <a href="https://twitch.tv/kanonxo">twitch.tv/kanonxo</a> · <a href="https://youtube.com/kanonxo">youtube.com/kanonxo</a></span>
+      <span><a href="https://docs.google.com/document/d/11u4wLCG1WfL-xSka2Aze0rI9vYRa7mq3N3Gp1bt0AWY/preview">Original Google Doc</a></span>
+    </div>
+  </header>
+
+  <section class="cheat" aria-label="Cheat sheet">
+    <div class="card">
+      <h4>Damage stat value, best to worst</h4>
+      <div class="chain">Double Chance <span class="gt">&gt;</span> Front/Back Dmg Boost <span class="gt">&gt;</span> Weapon Dmg Boost <span class="gt">≈</span> Crit Dmg Boost <span class="gt">&gt;</span> Damage Boost</div>
+    </div>
+    <div class="card">
+      <h4>Flat attack, best to worst</h4>
+      <div class="chain">Attack <span class="gt">&gt;</span> Max Attack <span class="gt">&gt;</span> Attack Bonus <span class="gt">&gt;</span> PvE / Boss Attack <span class="gt">&gt;</span> conditional</div>
+    </div>
+    <div class="card">
+      <h4>Lost when you transfer gear</h4>
+      <p style="margin:0">Philosopher's Stone line, Manastones/Soulstones, Theostones, Potential lines. Stat lines and enhancement carry over.</p>
+    </div>
+    <div class="card">
+      <h4>First priority</h4>
+      <p style="margin:0">Get 2 key Active Skills to level 20 early. Rings and Arcana are the main sources of extra levels.</p>
+    </div>
+  </section>
+
+  <h3>About this guide</h3>
+  <p>Kanon wrote this solo as a work in progress, covering the foundations of Aion 2 PvE and every system tied to character progression. The damage formulas are in Chapter 11. The October 2026 update covers the many changes for the Global release and adds Chapter 12 with links to class builds. If you spot an error or something out of date, Kanon asks that you let him know on stream.</p>
+
+  <h4>Author credentials</h4>
+  <ul>
+    <li>Roughly 1,000 hours played before Global launch, most of it off stream.</li>
+    <li>Cleared all content including the pinnacle raids, reaching just under 900k Combat Power.</li>
+    <li>As a Brawler, averaged +20% to +90% Skill Index across most CP brackets through the 800ks, peaking at 238 out of 100 (+138%) in the 560k–580k bracket. These logs came from the hardest content available in each bracket, with random groups.</li>
+    <li>All of this was on the Korean servers, where ping is typically under 30 ms.</li>
+  </ul>
+  <div class="note">
+    <span class="lbl">What is Skill Index?</span>
+    <p>It compares your DPS on a boss to the average of players within 20 Combat Power of you. A score of 100 out of 100 (+0%) is the median.</p>
+  </div>
+
+  <!-- CH 1 -->
+  <section class="ch" id="gear">
+    <div class="ch-head"><span class="ch-num">CH 01</span><h2>Gear &amp; basics</h2></div>
+    <p class="ch-sum">Every piece of gear stacks up to seven layers of stats. Knowing which layers survive a transfer is the single most useful thing to learn early.</p>
+    <div class="note"><span class="lbl">Beginner tip</span><p>Select any item in game and choose <b>Source</b> to see where it drops.</p></div>
+
+    <h3>Item grades</h3>
+    <p>Stat rolls and stones climb through the same grade colors: <span class="grade g-gray">Gray</span> → <span class="grade g-green">Green</span> → <span class="grade g-blue">Blue</span> → <span class="grade g-yellow">Yellow (Unique)</span> → <span class="grade g-orange">Orange (Heroic)</span>.</p>
+
+    <h3>The seven layers on a piece of gear</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Layer</th><th>What it is</th><th>On transfer</th></tr></thead>
+      <tbody>
+        <tr><td><b>Enhancement / Amp</b></td><td>Spend Kinah plus Enhance or Amplify Stones. <span class="grade g-yellow">Unique</span> goes to +15, <span class="grade g-orange">Heroic</span> to +20, then both get 5 Amp levels that unlock extra orange stats by gear type.</td><td><span class="tag conv">Converts</span><span class="sub">Unique +15 Amp 5 → Heroic +20 Amp 0</span></td></tr>
+        <tr><td><b>Base stats</b></td><td>Fixed stats that never change.</td><td><span class="tag keep">Fixed</span></td></tr>
+        <tr><td><b>Amp stats</b></td><td>Bonus stats unlocked by Amp levels beyond +15 / +20.</td><td><span class="tag conv">Converts</span></td></tr>
+        <tr><td><b>Stat lines</b> (Soul Binding)</td><td>Random lines from a pool specific to the slot. Reroll one with Synch Stones, shuffle all with a Soul Codex: Reset book, and raise their values with Soul Codex books.</td><td><span class="tag keep">Kept</span></td></tr>
+        <tr><td><b>Philosopher's Stone line</b></td><td>An extra stat line unlocked once Soul Binding Rate reaches 100%.</td><td><span class="tag lost">Lost</span></td></tr>
+        <tr><td><b>Manastones / Soulstones</b></td><td>Random socket rolls. Manastones for weapons and armor, Soulstones for accessories. Higher grade stones roll higher grade stats more often.</td><td><span class="tag lost">Lost</span></td></tr>
+        <tr><td><b>Theostone</b></td><td>Weapon socket with a small proc chance on hit, for example a burst of Water damage. Under 1% of total damage.</td><td><span class="tag lost">Lost</span></td></tr>
+        <tr><td><b>Potential</b></td><td>PvP only on Global. Unlocked with Potential Stones, mostly from the Abyss and Abyss Shop.</td><td><span class="tag lost">Lost</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Amp stats at Amp 5</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Gear</th><th>Flat</th><th>Percent</th></tr></thead>
+      <tbody>
+        <tr><td>Weapons</td><td class="num">Attack 150</td><td class="num">Attack Increase 5%</td></tr>
+        <tr><td>Armor</td><td class="num">Defense &amp; HP 400</td><td class="num">Defense &amp; HP Increase 5%</td></tr>
+        <tr><td>Accessories</td><td class="num">Attack 100, Defense 200</td><td class="num">Attack Increase 5%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Values are from the Asia servers; Global has not been confirmed.</p>
+
+    <h3>Pantheon stats</h3>
+    <p>Pantheon stats are bundles: each one grants two effects at once. You get them from your <b>Bracelet</b>, your <b>Arcana</b> cards (Chapter 6), and by collecting and equipping <b>Statues</b> and <b>Portraits</b> in the Pantheon.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Pantheon</th><th>Deity</th><th>Effects</th></tr></thead>
+      <tbody>
+        <tr><td><b>Destruction</b></td><td>Zikel</td><td>Attack Increase, Perfect Resist</td></tr>
+        <tr><td><b>Death</b></td><td>Triniel</td><td>Critical Hit, Regeneration Penetration</td></tr>
+        <tr><td><b>Wisdom</b></td><td>Lumiel</td><td>Lower MP Consumption, Double Chance</td></tr>
+        <tr><td><b>Destiny</b></td><td>Marchutan</td><td>MP, Endurance Chance</td></tr>
+        <tr><td><b>Space</b></td><td>Israphel</td><td>Move Speed, Block Chance</td></tr>
+        <tr><td><b>Justice</b></td><td>Nezekan</td><td>Defense, Perfect activation chance</td></tr>
+        <tr><td><b>Freedom</b></td><td>Vaizel</td><td>Accuracy, Evasion</td></tr>
+        <tr><td><b>Illusion</b></td><td>Kaisinel</td><td>Cooldown Reduction, Endurance Penetration</td></tr>
+        <tr><td><b>Life</b></td><td>Yustiel</td><td>HP, Regeneration activation chance</td></tr>
+        <tr><td><b>Time</b></td><td>Siel</td><td>Combat Speed, Double Chance Resist</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- CH 2 -->
+  <section class="ch" id="closer">
+    <div class="ch-head"><span class="ch-num">CH 02</span><h2>Gear slots up close</h2></div>
+    <p class="ch-sum">What each slot contributes, and the special pieces that enhance differently from regular gear.</p>
+
+    <h3>Weapon &amp; Guard</h3>
+    <p>The biggest offensive base stats and stat lines in the game. Weapon and Guard share the same line pool, which includes +Active Skill lines. <b>In short: most of your damage.</b></p>
+    <div class="scroll"><table>
+      <thead><tr><th>Weapon type</th><th class="num">Stat lines</th><th class="num">Max Amp</th></tr></thead>
+      <tbody>
+        <tr><td>Dungeon weapon</td><td class="num">4</td><td class="num">3</td></tr>
+        <tr><td>Extendable weapon (Khromede, Ludra)</td><td class="num">4</td><td class="num">5</td></tr>
+        <tr><td>Crafted weapon</td><td class="num">5</td><td class="num">1–5</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Dragon Lord crafted weapon tiers</h4>
+    <div class="scroll"><table>
+      <thead><tr><th class="num">Tier</th><th>Name</th><th class="num">Max Amp</th><th>Amp 1 bonus</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>True Dragon</td><td class="num">1</td><td class="num">Attack 10, Dmg Boost 1%</td></tr>
+        <tr><td class="num">2</td><td>Splendent True Dragon</td><td class="num">3</td><td class="num">Attack 12, Dmg Boost 2%</td></tr>
+        <tr><td class="num">3</td><td>White Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
+        <tr><td class="num">4</td><td>Splendent White Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
+        <tr><td class="num">5</td><td>Wise Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
+        <tr><td class="num">6</td><td>Splendent Wise Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="cols2">
+      <div>
+        <h3>Armor</h3>
+        <p>Helmet, Shoulders, Chest, Pants, Gloves, Cloak, Boots. Defensive base stats, plus +Passive Skill lines (never Active). <b>In short: defense, some damage, and passive levels.</b></p>
+      </div>
+      <div>
+        <h3>Accessories</h3>
+        <p>Offensive and defensive stats, weighted toward damage. <b>Only Rings give Active Skill lines.</b></p>
+        <ul>
+          <li><b>Necklace, Earrings:</b> basic stats + Passive Skills</li>
+          <li><b>Rings:</b> basic stats + Active Skills</li>
+          <li><b>Bracelet:</b> Pantheon stats. First from the Ludra raid.</li>
+          <li><b>Brooch:</b> basic stats. First from the Muspel raid.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Belt &amp; Amulet</h3>
+    <p>Both come from the level 45 main story. They use their own scrolls instead of Enhance Stones: Noble Belt Enhance Scrolls from clearing Strongholds, and Fierce Battle Amulet Enhance Scrolls from turning in feathers. After +10, Substance Morph each into the next grade, up to <span class="grade g-orange">Heroic</span>. The Belt is defensive; the Amulet is offensive.</p>
+
+    <h3>Runes</h3>
+    <p>Runes upgrade by combining two together, need Clash Rune Enhance Scrolls, and are the only gear that is destroyed on failure. Most high-ranked endgame players sit around +7 on both.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Stat</th><th class="num">Base</th><th>Growth</th></tr></thead>
+      <tbody>
+        <tr><td>Damage Tolerance</td><td class="num">0.5%</td><td class="num">+0.5% / level</td></tr>
+        <tr><td>Damage Boost</td><td class="num">0.5%</td><td class="num">+0.5% / level</td></tr>
+        <tr><td>Penetration</td><td class="num">100</td><td class="num">+50 / level</td></tr>
+        <tr><td>Combat Speed</td><td class="num">1%</td><td class="num">+1% / level after +6</td></tr>
+        <tr><td>Multi-hit Chance</td><td class="num">1%</td><td class="num">+1% / level after +9 <span class="sub">unconfirmed</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Pendant</h3>
+    <p>From the level 50 main story in the Chapter 1 expansion region. Enhanced with <span class="grade g-yellow">Unique</span> Amp Stones and Radiant Balaur's Essence, up to +20 with no Amp levels yet. It gets very expensive near max.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Stat</th><th class="num">Base</th><th>Growth</th></tr></thead>
+      <tbody>
+        <tr><td>HP</td><td class="num">300</td><td class="num">+10 / level</td></tr>
+        <tr><td>Attack Bonus</td><td class="num">10</td><td class="num">+5 / level</td></tr>
+        <tr><td>Defense Bonus</td><td class="num">1,000</td><td class="num">+50 / level</td></tr>
+        <tr><td>Critical Hit</td><td class="num">10</td><td class="num">+10 / level</td></tr>
+        <tr><td>Critical Hit Resist</td><td class="num">10</td><td class="num">+10 / level</td></tr>
+        <tr><td>Perfect Chance</td><td class="num">0%</td><td class="num">+0.5% / level after +8</td></tr>
+        <tr><td>Double Chance</td><td class="num">0%</td><td class="num">+0.5% / level after +13</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- CH 3 -->
+  <section class="ch" id="lines">
+    <div class="ch-head"><span class="ch-num">CH 03</span><h2>Ideal stat lines</h2></div>
+    <p class="ch-sum">Which lines to fish for on every slot, listed by how rare they are to roll. The percentage is the approximate roll chance, so the lowest numbers are the hardest to land.</p>
+
+    <h3>How rerolling works</h3>
+    <ul>
+      <li><b>Synch Stones</b> reroll one line. Use the same grade as the gear. A lower-grade stone has only a 10% chance to reroll at all, so never do that.</li>
+      <li>Synch Stones come from Substance Morphing Synch Stone Fragments (mostly from dungeons) or any <span class="grade g-yellow">Unique</span> gear.</li>
+      <li><b>Soul Codex: Reset</b> (Reset Books) rerolls every line at once.</li>
+      <li>Once you have the best combination, move it to new gear with Transfer Stones. Avoid putting a rare line on the Philosopher's Stone slot, because that slot never transfers.</li>
+      <li>Heroic Transfer Stones are scarce. Moving Unique to Unique is cheap; think hard before transferring into Heroic (see Chapter 5).</li>
+    </ul>
+    <div class="note"><span class="lbl">Reading the list</span><p>Order is by roll rarity, not damage. Weapon Damage Boost hits harder than Damage Boost, but Damage Boost appears first because it is rarer. Exact percentages vary per piece; the relative gaps stay the same. These are the Global lines.</p></div>
+
+    <div class="slots">
+      <div class="slot"><h5>Weapon &amp; Guard</h5><ol>
+        <li>Damage Boost <span class="pct rare">≈2%</span></li>
+        <li>Combat Speed <span class="pct">≈4%</span></li>
+        <li>Weapon Damage Boost <span class="pct">≈4%</span></li>
+        <li>Might <span class="pct">≈5%</span></li>
+        <li>Multi-hit Chance <span class="pct">≈5%</span></li>
+        <li>Precision* <span class="pct">≈6%</span></li>
+        <li>Attack <span class="pct">≈6%</span></li>
+      </ol></div>
+      <div class="slot"><h5>Helmet</h5><ol>
+        <li>Double Chance <span class="pct rare">≈1%</span></li>
+        <li>Attack Increase <span class="pct rare">≈1%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Cloak</h5><ol>
+        <li>Double Chance <span class="pct rare">≈1%</span></li>
+        <li>Attack Increase <span class="pct rare">≈1%</span></li>
+        <li>Perfect Chance <span class="pct rare">≈1%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Shoulder</h5><ol>
+        <li>Double Chance <span class="pct rare">≈1%</span></li>
+        <li>Critical Damage Boost <span class="pct">≈3%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Chest</h5><ol>
+        <li>Perfect Chance <span class="pct rare">≈1%</span></li>
+        <li>Damage Boost <span class="pct">≈3%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Pants</h5><ol>
+        <li>Attack Increase <span class="pct rare">≈1%</span></li>
+        <li>Perfect Chance <span class="pct rare">≈1%</span></li>
+        <li>Damage Tolerance <span class="pct">≈3%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Gloves</h5><ol>
+        <li>Perfect Chance <span class="pct rare">≈1%</span></li>
+        <li>Combat Speed <span class="pct">≈3%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Shoes</h5><ol>
+        <li>Perfect Chance <span class="pct rare">≈1%</span></li>
+        <li>Movement Speed <span class="pct">≈3%</span></li>
+        <li>Attack <span class="pct">≈4%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Necklace</h5><ol>
+        <li>Combat Speed <span class="pct rare">≈2%</span></li>
+        <li>Might <span class="pct rare">≈2%</span></li>
+        <li>Attack <span class="pct">≈8%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+        <li>Accuracy, if needed <span class="pct">≈6%</span></li>
+      </ol></div>
+      <div class="slot"><h5>Earring</h5><ol>
+        <li>Move Speed <span class="pct rare">≈2%</span></li>
+        <li>Might <span class="pct rare">≈2%</span></li>
+        <li>Precision <span class="pct rare">≈2%</span></li>
+        <li>Attack <span class="pct">≈8%</span></li>
+        <li class="rest">Passive Skills for the rest</li>
+        <li>Accuracy, if needed <span class="pct">≈6%</span></li>
+      </ol></div>
+      <div class="slot"><h5>Rings</h5><ol>
+        <li>Might <span class="pct rare">≈2%</span></li>
+        <li>Precision <span class="pct rare">≈2%</span></li>
+        <li>Attack <span class="pct">≈8%</span></li>
+        <li class="rest">Active Skills for the rest</li>
+      </ol></div>
+      <div class="slot"><h5>Bracelet</h5><ol>
+        <li>Illusion</li><li>Wisdom</li><li>Destruction</li><li>Time</li><li>Justice</li><li>Space</li>
+      </ol></div>
+      <div class="slot"><h5>Brooch</h5><ol>
+        <li>Might</li><li>Precision</li><li>Accuracy</li><li>Constitution</li><li>Critical or Block</li>
+      </ol></div>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">*Weapon Precision may be unnecessary because of the new 50% crit cap on Global, depending on Ludra's caps. Some classes swap a Bracelet line; Assassin takes Death instead of Space.</p>
+
+    <h3>Accuracy &amp; crit requirements</h3>
+    <p>Bosses have defensive stats that counter Accuracy and Critical Hit. Reach these totals to stop missing and keep maximum crit. Count every source that adds to them, such as PvE Accuracy and Block Penetration, so your Main Stats page will show less than these numbers. The Global crit cap is 50%.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Raid</th><th class="num">Accuracy</th><th class="num">Crit</th></tr></thead>
+      <tbody>
+        <tr><td>Ludra <span class="sub">projected for Global</span></td><td class="num">1,200</td><td class="num">1,200–1,400</td></tr>
+        <tr><td>Corroded</td><td class="num">2,350</td><td class="num">2,500</td></tr>
+        <tr><td>Muspel (Normal)</td><td class="num" style="color:var(--muted)">unknown</td><td class="num" style="color:var(--muted)">unknown</td></tr>
+        <tr><td>Muspel (Hard)</td><td class="num">2,800</td><td class="num">3,150</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Approximate and not yet confirmed for Global. If you have proven exact values, Kanon wants to hear them.</p>
+  </section>
+
+  <!-- CH 4 -->
+  <section class="ch" id="skills">
+    <div class="ch-head"><span class="ch-num">CH 04</span><h2>Skills</h2></div>
+    <p class="ch-sum">Three types: Active, Passive and Stigma. Active and Stigma skills unlock Specialty Perks as they level.</p>
+
+    <h3>Active skills</h3>
+    <p>Level them to 10 with Wisdom Stones, which come from leveling, turning in feathers, and the Nightmare and Shugo Festival shops. Levels beyond 10 come from gear stat lines, the Daevanion boards and Arcana. You can equip up to three Specialty Perks, unlocked like this:</p>
+    <ol class="ladder">
+      <li><div class="lv"><small>LV</small>8</div><p>First 3 perk options and slot 1</p></li>
+      <li><div class="lv"><small>LV</small>12</div><p>4th perk option and slot 2</p></li>
+      <li><div class="lv"><small>LV</small>16</div><p>5th and final perk option</p></li>
+      <li><div class="lv"><small>LV</small>20</div><p>Slot 3. The build comes online here.</p></li>
+    </ol>
+    <p>Every class has key skills that need level 20 before the build works. For Gladiator (Overhead Slam) and Templar (Judgment), a single skill is over 60% of total damage. Endgame Korea runs 2–5 skills at 20 depending on class. Global is likely to launch with fewer Arcana cards, so commit to your two most important skills early and chase them on <b>Ring lines</b> and <b>Arcana</b>.</p>
+
+    <h3>Passive skills</h3>
+    <p>Upgraded the same way as actives, with no perks. Once your main actives hit 20, push your class's key passives. They carry a lot of damage; endgame Korean players take some to level 25–30.</p>
+
+    <h3>Stigma skills</h3>
+    <p>Special skills with longer cooldowns. Each has 5 perks, all active once unlocked by level, and you can equip up to 6 (possibly fewer on Global).</p>
+    <ul>
+      <li><b>Levels 1–20:</b> Stigma Shards, made by combining Unstable Stigma Shards from PvE or bought with Abyss Points (Supply Requests, Daily Duties, Weekly Commands, and Abyss farming).</li>
+      <li><b>Levels 21–25:</b> gold Superior Stigma Shards. You get some leveling from 45 to 50, plus one for each Stigma skill you take to 20.</li>
+      <li><b>Fully maxed:</b> three skills at 25, one at 23, the rest at 20.</li>
+    </ul>
+    <p>Key Stigmas give big buffs and raise important passives. Supports in particular depend on Stigma levels for skills like Undefeated Mantra and Light of Protection.</p>
+  </section>
+
+  <!-- CH 5 -->
+  <section class="ch" id="enhance">
+    <div class="ch-head"><span class="ch-num">CH 05</span><h2>Enhancement</h2></div>
+    <p class="ch-sum">Upgrading gear: enhancement levels, socket stones, Soul Binding, and transferring everything to a better piece.</p>
+
+    <h3>Growth</h3>
+    <ul>
+      <li>Spend Kinah and Enhance Stones up to +15 (<span class="grade g-yellow">Unique</span>) or +20 (<span class="grade g-orange">Heroic</span>), then Amplify Stones for 5 Amp levels.</li>
+      <li>Amplify Stones are made by Substance Morphing Amplify Fragments with Enhance Stones.</li>
+      <li>The success rate soft-resets to 60% going from +15 to +16.</li>
+      <li>Enhance Stones are the bottleneck even for players who spend money.</li>
+    </ul>
+    <div class="note"><span class="lbl">Potential Enhance</span><p>Potential is a PvP-only stat on Global, so skip it for PvE. On Asia servers it adds PvE Damage Boost/Tolerance using Potential Stones made by Substance Morphing spare gear.</p></div>
+
+    <h3>Manastones &amp; Soulstones</h3>
+    <p>Each stone you consume rerolls every socket on the piece. Save Superior stones for endgame gear you will keep, because they are lost on transfer and get expensive.</p>
+    <ul>
+      <li>Aim for at least one <span class="grade g-yellow">yellow</span> damage line. The jump from blue (+30) to yellow (+100) is big, and +100 equals 1% on your stat sheet.</li>
+      <li>Two yellow Attack lines are about equal to one yellow Damage Boost line.</li>
+      <li>One yellow Attack (+10) line is a fine placeholder when stones are short.</li>
+    </ul>
+    <div class="chain" style="margin:8px 0 18px">Front/Back Dmg Boost <span class="gt">&gt;</span> Weapon Dmg Boost <span class="gt">≈</span> Crit Dmg Boost <span class="gt">&gt;</span> Damage Boost <span class="gt">&gt;</span> Attack</div>
+
+    <h3>Theostones</h3>
+    <p>One per weapon, and identical stones don't stack. Each has a chance to proc on hit, from crowd control to damage. More Combat Speed means more hits and more value from low-chance stones, though ping affects this. Even the best ones are a tiny share of DPS, so many players just pick the one with the nicest weapon glow.</p>
+
+    <h3>Soul Binding</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Action</th><th>What it does</th><th>Uses</th></tr></thead>
+      <tbody>
+        <tr><td><b>Bind</b></td><td>Raises each stat line's value. Every upgrade succeeds but the amount is random, and cost rises each time. At 100% Soul Binding Rate you can add one extra line.</td><td>Soul Codex books; 2 Philosopher's Stones for the extra line (mainly from Conquest dungeons)</td></tr>
+        <tr><td><b>Sync</b></td><td>Rerolls a single stat line.</td><td>Synch Stones</td></tr>
+        <tr><td><b>Reset</b></td><td>Rerolls all stat lines at once.</td><td>Soul Codex: Reset</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note warn"><span class="lbl">Watch out</span><p>The Philosopher's Stone line does not transfer.</p></div>
+
+    <h3>Transfer</h3>
+    <p>Transfer moves your stat lines and enhancement onto a new piece. It costs Transfer Stones, made from Transfer Stone Fragments. Outside a few shops such as the Season Shop, fragments only come from Substance Morphing <span class="grade g-orange">Heroic</span> gear, at 5 fragments per piece.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Transfer Stone</th><th class="num">Fragments</th><th class="num">Heroic pieces</th></tr></thead>
+      <tbody>
+        <tr><td>Accessory</td><td class="num">10</td><td class="num">2</td></tr>
+        <tr><td>Armor</td><td class="num">15</td><td class="num">3</td></tr>
+        <tr><td>Weapon</td><td class="num">20</td><td class="num">4</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Same grade to same grade costs 1 Transfer Stone of that grade.</li>
+      <li><span class="grade g-yellow">Unique</span> to <span class="grade g-orange">Heroic</span> also needs 5 extra yellow Transfer Stones.</li>
+      <li>Unique fragments work the same way; higher item level gear gives more (x1 to x5).</li>
+      <li>You cannot upgrade a Unique Transfer Stone into a Heroic one.</li>
+    </ul>
+    <div class="note"><span class="lbl">Kanon's advice</span><p>Hoard Heroic fragments early; you will need many later. Skip the first Heroic set (Ancient Spirit) and wait for the second (Faded Shadow) before moving to Heroic. Rolling and transferring on Unique costs almost nothing by comparison.</p></div>
+  </section>
+
+  <!-- CH 6 -->
+  <section class="ch" id="arcana">
+    <div class="ch-head"><span class="ch-num">CH 06</span><h2>Arcana</h2></div>
+    <p class="ch-sum">A card system that works like a second set of gear: each card type is a slot, and cards belong to sets with set bonuses.</p>
+
+    <h3>Card types</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Card</th><th>Rolls</th></tr></thead>
+      <tbody>
+        <tr><td><b>Chalice</b></td><td>Pantheon stat + any Active or Passive Skill</td></tr>
+        <tr><td><b>Scale</b></td><td>Pantheon stat + any Active or Passive Skill <span class="sub">double cost to craft; not at Global launch</span></td></tr>
+        <tr><td><b>Parchment</b></td><td>Pantheon stat + half of your Active Skills</td></tr>
+        <tr><td><b>Compass</b></td><td>Pantheon stat + the other half of your Active Skills</td></tr>
+        <tr><td><b>Bell</b></td><td>Pantheon stat + half of your Passive Skills</td></tr>
+        <tr><td><b>Mirror</b></td><td>Pantheon stat + the other half of your Passive Skills</td></tr>
+        <tr><td><b>Key</b>, <b>Dice</b></td><td>Offensive stats</td></tr>
+        <tr><td><b>Hourglass</b>, <b>Lantern</b></td><td>Defensive stats</td></tr>
+      </tbody>
+    </table></div>
+    <p>There are 7 sets in total. Global launches with fewer; Asia launched with 5 cards (Compass through Mirror) and 2 sets (Primal Vigor, Magic Armor).</p>
+
+    <h3>Leveling and crafting</h3>
+    <ul>
+      <li>Transcendence dungeons drop Arcana cards and Training Arcana. Feed either into your equipped card, up to level 5.</li>
+      <li>Each level adds +1 to a random skill line on the card, or a small stat bump if it has no skill lines.</li>
+      <li>Feeding an old card into a better one keeps only part of its EXP, but it is often still worth it. Same-type cards give bonus EXP.</li>
+      <li>Crafting through <b>Transmute</b> lets you choose the lines. It costs Crystals, made by Substance Morphing shards from different Transcendence dungeons. Absolutely worth doing.</li>
+      <li>Chalice and Scale have the largest pools and are the hardest to roll perfectly. If you plan a 4-line craft, craft the Chalice first.</li>
+      <li>Until then, a cheaper set that gets your key Actives to 20 is better than waiting for perfect lines.</li>
+    </ul>
+
+    <h3>Best-in-slot set setups</h3>
+    <div class="cols2">
+      <div class="scroll" style="margin:0"><table>
+        <thead><tr><th colspan="2">5-card setup (launch)</th></tr></thead>
+        <tbody>
+          <tr><td colspan="2"><b>Primal Vigor</b><span class="sub">2-pc: +60 PvE Attack at 70% HP or more</span></td></tr>
+          <tr><td>Chalice</td><td>Time</td></tr>
+          <tr><td>Parchment</td><td>Life</td></tr>
+          <tr><td colspan="2"><b>Magic Armor</b><span class="sub">2-pc: restore 1,500 MP at 20% MP or less (30s CD)</span></td></tr>
+          <tr><td>Compass</td><td>Death</td></tr>
+          <tr><td>Bell</td><td>Destruction</td></tr>
+          <tr><td>Mirror</td><td>Wisdom</td></tr>
+        </tbody>
+      </table></div>
+      <div class="scroll" style="margin:0"><table>
+        <thead><tr><th colspan="2">8-card setup</th></tr></thead>
+        <tbody>
+          <tr><td colspan="2"><b>Punishing Overture</b><span class="sub">2-pc: +5% Boss Damage Tolerance · 4-pc: +60 PvE Attack, +10% PvE Damage Boost at 70% HP or more</span></td></tr>
+          <tr><td>Chalice</td><td>Time</td></tr>
+          <tr><td>Parchment</td><td>Life</td></tr>
+          <tr><td>Key</td><td>Attack Bonus</td></tr>
+          <tr><td>Hourglass</td><td>Defense Bonus</td></tr>
+          <tr><td colspan="2"><b>Protected Soul</b><span class="sub">2-pc: +5% Restoration · 4-pc: +5% Weapon Damage Boost, 10k shield for 5s at 30% HP or less (2 min CD)</span></td></tr>
+          <tr><td>Compass</td><td>Death</td></tr>
+          <tr><td>Bell</td><td>Destruction</td></tr>
+          <tr><td>Mirror</td><td>Wisdom</td></tr>
+          <tr><td>Scale</td><td>Destruction, Destiny</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <p style="margin-top:14px">In the 5-card setup the set bonuses are weaker than the Pantheon stats, so Pantheon stats come first and Parchment/Compass sets can be swapped. The three lines that matter most are <b>Chalice (Time</b>, Combat Speed), <b>Bell (Destruction</b>, Attack Increase) and <b>Mirror (Wisdom</b>, Double Chance).</p>
+  </section>
+
+  <!-- CH 7 -->
+  <section class="ch" id="daevanion">
+    <div class="ch-head"><span class="ch-num">CH 07</span><h2>Daevanion boards</h2></div>
+    <p class="ch-sum">Eight Paragon-style boards (like Diablo 4) where each tile gives stats or skill levels. Respeccing is nearly free.</p>
+    <div class="tiles">
+      <div class="tile"><i style="background:var(--g-gray)"></i>Gray · basic stats</div>
+      <div class="tile"><i style="background:var(--g-green)"></i>Green · passive skills or double stats</div>
+      <div class="tile"><i style="background:var(--g-blue)"></i>Blue · active skills or % stats</div>
+      <div class="tile"><i style="background:var(--g-orange)"></i>Orange · major stats, on corners and sides</div>
+    </div>
+
+    <h3>The four white boards</h3>
+    <p>Nezekan, Zikel, Vaizel and Triniel share one point pool and cannot all be maxed.</p>
+    <ol>
+      <li>Take your key Active Skill tiles first to reach levels 12, 16 and especially 20.</li>
+      <li>Then head for the valuable Orange tiles. You will have enough points for every Active and Passive.</li>
+      <li>Pick up every gray Attack Bonus tile eventually.</li>
+    </ol>
+    <p>Skip for PvE: Multi-hit Resist (Triniel) and Critical Damage Tolerance (Vaizel). Giving these up is a good way to reach more Attack Bonus tiles.</p>
+
+    <h3>The four colored boards</h3>
+    <p>These give no skill levels and each has its own separate points.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Board</th><th>Orange tiles</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Ariel</b></td><td>PvE Damage Boost / Tolerance</td><td>The PvE board. Completable from Conquest and Transcendence dungeons.</td></tr>
+        <tr><td><b>Azphel</b></td><td>PvP stats</td><td>Not needed for PvE.</td></tr>
+        <tr><td><b>Marchutan</b></td><td>Weapon Damage Boost / Tolerance</td><td>Mid-game. Weapon Damage Tolerance is useless in PvE, but unlock it anyway since the crystals are farmable. Completable from dungeons or Yustiel Crystals at 1:1.</td></tr>
+        <tr><td><b>Yustiel</b></td><td>Attack / Defense Increase</td><td>Endgame. Completable from Conquest and Transcendence dungeons.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- CH 8 -->
+  <section class="ch" id="genus">
+    <div class="ch-head"><span class="ch-num">CH 08</span><h2>Pet Genus</h2></div>
+    <p class="ch-sum">Five boards (Cogni, Fera, Natura, Varian, Special), each with nine stat slots. Raising Insight (the Genus level) opens slots and higher grade rolls.</p>
+    <p><b>Analyze</b> rerolls every open slot. Lock a slot to keep it; each lock makes the next roll more expensive. You can save up to 3 Genus presets.</p>
+
+    <h3>Global steps</h3>
+    <ol>
+      <li>Don't lock anything. Analyze until every board reaches level 9. Do the Special board first.</li>
+      <li>At level 9, use <b>Auto Analyze</b>: pick the BIS stat for slot 4 at <span class="grade g-yellow">Unique</span> grade.</li>
+      <li>Upgrade slots in this order: 4 → 1, 5 → 6, 9 → 7 → 2, 8.</li>
+      <li>Rainbow Crystals work on any board if you have plenty.</li>
+    </ol>
+
+    <h3>Global BIS slots</h3>
+    <p>All five boards share the same targets for most slots:</p>
+    <div class="scroll"><table>
+      <thead><tr><th class="num">Slots</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1, 5</td><td>Max Attack &gt; Attack Bonus</td></tr>
+        <tr><td class="num">2, 8</td><td>HP Increase % <span class="sub">Usually skip: too expensive in Crystals and Kinah to chase</span></td></tr>
+        <tr><td class="num">3, 6, 9</td><td>Power Shard Bonus <span class="sub">Take Crit or Accuracy first if you are under the cap</span></td></tr>
+      </tbody>
+    </table></div>
+    <p>Slots 4 and 7 change per board:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Board</th><th>Slot 4</th><th>Slot 7</th></tr></thead>
+      <tbody>
+        <tr><td><b>Cogni</b></td><td>Critical Damage Boost &gt; Damage Boost, PvE Damage Boost</td><td>Damage Tolerance, PvE Damage Tolerance &gt; Endurance</td></tr>
+        <tr><td><b>Fera</b></td><td>Weapon Damage Boost &gt; Damage Boost, PvE Damage Boost</td><td>Damage Tolerance, PvE Damage Tolerance &gt; Endurance</td></tr>
+        <tr><td><b>Natura</b></td><td>PvE Damage Boost &gt; Multi-hit &gt; Perfect Chance</td><td>PvE Damage Tolerance &gt; Endurance</td></tr>
+        <tr><td><b>Varian</b></td><td>Front/Back Damage Boost &gt; PvE Damage Boost</td><td>PvE Damage Tolerance &gt; Endurance</td></tr>
+        <tr><td><b>Special</b></td><td>Double Chance only. Roll until you get it.</td><td>Damage Tolerance &gt; Endurance</td></tr>
+      </tbody>
+    </table></div>
+
+    <details>
+      <summary>Asia server (KR/TW) approach</summary>
+      <div>
+        <ol>
+          <li>Level each board to 10 before locking anything, unless you roll a high yellow or orange BIS stat on slot 4. Waiting gives the best chance at top-grade lines.</li>
+          <li>At 10, Analyze with nothing locked until slot 4 is BIS on every board. Highest priority: Special (Double Chance) and Varian (Front/Back Damage Boost), then Fera (Weapon Damage Boost) and Cogni (Critical Damage Boost).</li>
+          <li>A high yellow roll can beat a low orange one. Many players accept lower rolls on a first preset and perfect a second.</li>
+        </ol>
+        <p><b>Non-Special boards:</b> slots 1, 4, 7 Boss Attack &gt; Crit · slots 3, 9 Double Chance (aim for 2% rolls) · slots 2, 5, 8 Max Attack &gt; Attack Bonus · slot 6 Damage Tolerance.</p>
+        <p style="margin:0"><b>Special board:</b> slots 3, 9 Double Chance · slot 6 Damage Tolerance · the rest Max Attack &gt; Attack Bonus.</p>
+      </div>
+    </details>
+
+    <h3>Owned effects</h3>
+    <p>Pets also give passive stats as you unlock and level them, mostly by killing mobs and from pet rewards across content. At Global launch the max level is 3. Prioritize <b>Might</b> (every Cogni mob gives 1) and <b>Precision</b> (every Natura mob gives 1). Use Source to find a mob; if it shows no source, it lives on the other faction's land.</p>
+  </section>
+
+  <!-- CH 9 -->
+  <section class="ch" id="wings">
+    <div class="ch-head"><span class="ch-num">CH 09</span><h2>Wings</h2></div>
+    <p class="ch-sum">Wings give an Equip Effect while worn and an Owned Effect just for having them, so collecting and upgrading all of them pays off.</p>
+    <ul>
+      <li>Wings enhance up to +10, which raises the Owned Effect. Enhancement is not available at Global launch.</li>
+      <li>Only the first Owned line and the last one upgrade. The last line is hidden at +0 and appears at +1. Brawler Wings, for example, reveal Weapon Damage Boost.</li>
+    </ul>
+
+    <div class="wings">
+      <div class="wing"><h5>Azure Flash</h5>
+        <div class="grp">Equip</div><ul><li>Damage Boost</li><li>Accuracy Bonus</li><li>Block</li><li>Endurance</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Damage Boost <span class="fx">fixed</span></li><li>Block <span class="fx">fixed</span></li><li>Weapon Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Awaken Pride</h5>
+        <div class="grp">Equip</div><ul><li>Max Attack</li><li>Back Attack Critical Hit</li><li>Back Attack Damage Boost</li><li>Penetration</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Attack Bonus <span class="fx">fixed</span></li><li>HP <span class="fx">fixed</span></li><li>Back Attack Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Blue Wave</h5>
+        <div class="grp">Equip</div><ul><li>Evasion Bonus</li><li>Critical Hit Resist</li><li>MP</li><li>Natural MP Regen</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power Crit Hit Resist <span class="up">upgrades</span></li><li>Critical Hit Resist <span class="fx">fixed</span></li><li>Back Attack Crit Resist <span class="fx">fixed</span></li><li>PvE Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Brawler</h5><div class="why">Abyss Shop</div>
+        <div class="grp">Equip</div><ul><li>Defense Bonus</li><li>Status Effect Chance</li><li>Status Effect Resist</li><li>HP</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Impact-type Chance <span class="fx">fixed</span></li><li>Damage Tolerance <span class="fx">fixed</span></li><li>Weapon Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Dramata Nest</h5>
+        <div class="grp">Equip</div><ul><li>PvE Attack</li><li>PvE Defense</li><li>PvE Accuracy</li><li>PvE Damage Boost</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Attack Bonus <span class="fx">fixed</span></li><li>Accuracy Bonus <span class="fx">fixed</span></li><li>Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing hot"><h5>Eroded</h5><div class="why">BIS equip for front attackers</div>
+        <div class="grp">Equip</div><ul><li>Max Attack</li><li>Multi-hit Chance</li><li>HP</li><li>Front Attack Damage Boost</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Front Attack <span class="fx">fixed</span></li><li>Natural HP Regen <span class="fx">fixed</span></li><li>Front Attack Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Forest Spirit</h5>
+        <div class="grp">Equip</div><ul><li>Boss Attack</li><li>Defense Bonus</li><li>Damage Tolerance</li><li>Boss Damage Boost</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Damage Tolerance <span class="fx">fixed</span></li><li>Boss Attack <span class="fx">fixed</span></li><li>PvE Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Illusory Echo</h5>
+        <div class="grp">Equip</div><ul><li>Max Attack</li><li>Critical Hit</li><li>Penetration</li><li>Perfect Chance</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Double Chance <span class="fx">fixed</span></li><li>Perfect Chance <span class="fx">fixed</span></li><li>Max Attack <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Nightmare</h5>
+        <div class="grp">Equip</div><ul><li>Attack Bonus</li><li>Accuracy Bonus</li><li>Critical Hit</li><li>Boss Damage Boost</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Boss Attack <span class="fx">fixed</span></li><li>Boss Defense <span class="fx">fixed</span></li><li>Double Chance <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Salvation</h5>
+        <div class="grp">Equip</div><ul><li>Critical Hit</li><li>Penetration</li><li>Front Attack</li><li>Front Attack Damage Boost</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Front Defense <span class="fx">fixed</span></li><li>PvE Defense <span class="fx">fixed</span></li><li>Front Attack Damage Boost <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Talisra</h5>
+        <div class="grp">Equip</div><ul><li>Attack Bonus</li><li>Defense Bonus</li><li>Accuracy Bonus</li><li>Cooldown Reduction</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Defense Bonus <span class="fx">fixed</span></li><li>Evasion Bonus <span class="fx">fixed</span></li><li>Attack Bonus <span class="up">upgrades</span></li></ul></div>
+      <div class="wing"><h5>Ultimate Daeva</h5>
+        <div class="grp">Equip</div><ul><li>Defense Bonus</li><li>HP</li><li>MP</li><li>Penetration</li></ul>
+        <div class="grp">Owned</div><ul><li>Flight Power <span class="up">upgrades</span></li><li>Penetration <span class="fx">fixed</span></li><li>Accuracy Bonus <span class="fx">fixed</span></li><li>Attack Bonus <span class="up">upgrades</span></li></ul></div>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">All of these are worth maxing eventually. Some will not be in the game at Global launch.</p>
+
+    <h3>Most-equipped wings by class</h3>
+    <p>Korean servers as of Aug 21, 2026, from <a href="https://aion2tool.com/statistics/jobstats">aion2tool.com</a>.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Class</th><th>1st</th><th>2nd</th><th>3rd</th></tr></thead>
+      <tbody>
+        <tr><td><b>Assassin</b></td><td>Talisra <span class="pct">58%</span></td><td>Awaken Pride <span class="pct">30%</span></td><td>Illusory Echo <span class="pct">3%</span></td></tr>
+        <tr><td><b>Brawler</b></td><td>Eroded <span class="pct">60%</span></td><td>Talisra <span class="pct">34.5%</span></td><td>Salvation <span class="pct">1.5%</span></td></tr>
+        <tr><td><b>Templar</b></td><td>Eroded <span class="pct">77%</span></td><td>Talisra <span class="pct">9%</span></td><td>Brawler <span class="pct">3.5%</span></td></tr>
+        <tr><td><b>Gladiator</b></td><td>Eroded <span class="pct">73%</span></td><td>Talisra <span class="pct">18.5%</span></td><td>Dark Veil <span class="pct">3.5%</span></td></tr>
+        <tr><td><b>Ranger</b></td><td>Eroded <span class="pct">54.5%</span></td><td>Talisra <span class="pct">25.5%</span></td><td>Illusory Echo <span class="pct">6.5%</span></td></tr>
+        <tr><td><b>Sorcerer</b></td><td>Talisra <span class="pct">91.5%</span></td><td>Eroded <span class="pct">5%</span></td><td>Brawler <span class="pct">2.5%</span></td></tr>
+        <tr><td><b>Spiritmaster</b></td><td>Eroded <span class="pct">45%</span></td><td>Talisra <span class="pct">43.5%</span></td><td>Brawler <span class="pct">5.5%</span></td></tr>
+        <tr><td><b>Cleric</b></td><td>Eroded <span class="pct">45%</span></td><td>Talisra <span class="pct">35%</span></td><td>Illusory Echo <span class="pct">9%</span></td></tr>
+        <tr><td><b>Chanter</b></td><td>Eroded <span class="pct">45%</span></td><td>Talisra <span class="pct">23%</span></td><td>Awaken Pride <span class="pct">12.5%</span></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Awaken Pride had just released and is expected to overtake Talisra for Assassin.</p>
+    <h4>Why is everyone on Eroded?</h4>
+    <p>Front/Back Attack Damage Boost sits in its own multiplicative damage bucket, which makes it extremely valuable. Even ranged classes now build around it despite having fewer sources of it. Sorcerer and Spiritmaster are the exceptions because much of their kit doesn't benefit from positional damage.</p>
+  </section>
+
+  <!-- CH 10 -->
+  <section class="ch" id="closet">
+    <div class="ch-head"><span class="ch-num">CH 10</span><h2>Closet</h2></div>
+    <p class="ch-sum">Transmog as long-term power: every skin you unlock adds a percentage stat tied to that skin type.</p>
+    <p>Weapon skins, for instance, raise the attack of your weapon by a percentage. If your Gauntlet's attack is 500 and your closet weapon bonus is +6.7%, the bonus applies to that 500.</p>
+    <div class="formula">Outfit Damage <span class="op">=</span> [ (Min Attack <span class="op">+</span> Max Attack) <span class="op">÷</span> 2 ] <span class="op">×</span> Weapon Outfit Increase % <span class="op">+</span> Pure Attack</div>
+  </section>
+
+  <!-- CH 11 -->
+  <section class="ch" id="stats">
+    <div class="ch-head"><span class="ch-num">CH 11</span><h2>How stats work</h2></div>
+    <p class="ch-sum">How much damage each stat is really worth, and the full damage formula. Much of this math was worked out with the Korean YouTuber Aion Research Lab (AionLab) and is still being refined.</p>
+
+    <h3>What 1% of each stat is worth</h3>
+    <p>Measured at current endgame Korea on an ideal build, support buffs included. Diminishing returns mean these values will be higher on Global, where players have fewer stats. Front/Back Damage Boost starts at 0% while Crit Damage starts at 50%, so early points favor Front/Back even more.</p>
+    <div class="eff" role="img" aria-label="Damage gained per 1% of each stat">
+      <div class="eff-cap">DPS gained per +1% of the stat. Light segment is the low end, solid gold the range.</div>
+      <div id="effRows"></div>
+      <div class="axis"><span></span><div class="ticks" id="effTicks"></div><span></span></div>
+    </div>
+
+    <div class="scroll"><table>
+      <thead><tr><th>Stat</th><th class="num">Value</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><b>Double Chance</b></td><td class="num">0.60–0.65%</td><td>Doubles a hit. The strongest offensive stat right now. Bosses from Dying Dramata on have 30% Double Chance Resist. Worth about 0.8% at 50% DC, 0.65% at 70%, 0.60% at 80%.</td></tr>
+        <tr><td><b>Front/Back Damage Boost</b></td><td class="num">0.57–0.65%</td><td>Added in the level 50 update. Starts at 0% in its own multiplicative bucket. Assumes landing the positional 75% of the time.</td></tr>
+        <tr><td><b>Weapon Damage Boost</b></td><td class="num">0.50–0.55%</td><td>Its own bucket, multiplied directly by Pure Attack, so it grows as Pure Attack grows.</td></tr>
+        <tr><td><b>Critical Damage Boost</b></td><td class="num">0.40–0.60%</td><td>Starts at 50%. Classes with crit damage buffs (Gladiator, Chanter, Ranger, Assassin, Cleric) sit near 0.40–0.45%; guaranteed-crit classes can reach 0.6%. Includes 25% boss crit damage resist.</td></tr>
+        <tr><td><b>Damage Boost</b></td><td class="num">0.30–0.35%</td><td>Additive with Boss, PvE and Species Damage Boost, so it dilutes fastest. Based on about 180% total after 50% boss resistance.</td></tr>
+        <tr><td><b>Multi-hit</b></td><td class="num">≈0.33%</td><td>1–4 extra hits at 5% damage each. Value measured in the 36–40% range. Exact formula placement still being tested.</td></tr>
+        <tr><td><b>Perfect</b></td><td class="num">≈0.10%</td><td>Rolls your weapon's max damage. Also has a hidden ≈5% boost to Pure Attack that testing confirmed.</td></tr>
+        <tr><td><b>PvP Damage Boost</b></td><td class="num">0.60%</td><td>For PvP players.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Flat attack, per 10 points</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Stat</th><th class="num">+10 is worth</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><b>Attack</b></td><td class="num">0.17%</td><td>Part of Pure Attack, so it is multiplied by Weapon Damage Boost. Two yellow Attack Manastone lines ≈ 1% Damage Boost.</td></tr>
+        <tr><td><b>Max Attack</b></td><td class="num">0.1325%</td><td>Raises the top of your weapon's range and its average (641–709 becomes 641–729 with +20). Also scales with Perfect.</td></tr>
+        <tr><td><b>Attack Bonus</b></td><td class="num">0.10%</td><td>Added after Weapon Damage Boost but still inside Attack Increase.</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Your in-game Attack number does not include Weapon Damage Boost. Remove WDB from your Marchutan board and Attack stays the same. For the full Max Attack vs Attack Bonus breakdown, see <a href="https://youtu.be/XFdyimL2_Mk?t=377">AionLab's video</a>.</p>
+
+    <h3>Diminishing returns, worked through</h3>
+    <p>Double Chance doubles a hit, so with base damage 1, going from 0% to 1% raises average damage from 1.00 to 1.01: a full 1% gain. Going from 1% to 2% moves you from 1.01 to 1.02, which is only a 0.99% gain, because you were already ahead.</p>
+    <p>At endgame: 80% Double Chance, minus 30% boss resist, plus 12% from support buffs, leaves 62% effective. Over 100 attacks that is 162 damage. At 63% it is 163. So the extra 1% is worth about <b class="mono">0.617%</b> DPS.</p>
+
+    <h3>Power Shards</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Shard</th><th class="num">Damage gain</th></tr></thead>
+      <tbody>
+        <tr><td>Power Shard</td><td class="num">+4.65%</td></tr>
+        <tr><td><span class="grade g-yellow">Superior Power Shard</span></td><td class="num">+8.9%</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Defensive and hit-check stats</h3>
+    <div class="cols2">
+      <div>
+        <h4>Accuracy vs Block / Parry</h4>
+        <p>Accuracy cancels Block one-to-one. About 100 points ≈ 6–7% chance. Parry caps at 80%, reached at a 1,200 gap: with 2,000 Block against 1,000 Accuracy, the target parries 60–70% of the time.</p>
+        <h4>Critical Hit vs Crit Resist</h4>
+        <p>Same formula and same 80% cap. Skill passives add on top, so if a skill already reaches 80% crit, skip crit-increasing perks for it.</p>
+      </div>
+      <div>
+        <h4>Defense vs Penetration</h4>
+        <p>Damage is reduced by 10% of (Defense − Penetration) in PvE and 1% in PvP. Example: 500 damage, 200 Defense, 100 Pen → 490 damage (499 in PvP). Penetration is low value.</p>
+        <h4>Damage Tolerance &amp; Endurance</h4>
+        <p>Tolerance offsets the matching Damage Boost. Bosses have no Front/Back DB, Weapon DB, Crit or Multi-hit, so tolerance against those is useless in PvE. Endurance is your chance to take half damage; bosses can't penetrate it.</p>
+      </div>
+    </div>
+    <div class="note"><span class="lbl">Combat Speed</span><p>S-tier: stack as much as you can. It depends heavily on ping and FPS. In testing, a 150–200 ms ping gap made a 50–70% damage difference, with Templar, Brawler and Assassin all affected about equally. Spiritmaster may differ because of pet damage.</p></div>
+
+    <h3>The damage formula</h3>
+    <p>Tested extensively and the most complete version available. Everything is confirmed except where Multi-hit sits; it may belong outside Attack Increase.</p>
+    <div class="formula"><span class="c">// 1. Attack</span>
+A <span class="op">=</span> ( ( Pure Attack <span class="op">×</span> Weapon Dmg Boost ) <span class="op">×</span> Multi-hit <span class="op">×</span> Power Shard ) <span class="op">+</span> Attack Bonus
+B <span class="op">=</span> A <span class="op">×</span> Attack Increase % <span class="op">+</span> PvE Atk <span class="op">+</span> Boss Atk <span class="op">+</span> Species Atk <span class="op">+</span> Front/Back Atk
+
+<span class="c">// 2. Skill and defense</span>
+C <span class="op">=</span> B <span class="op">×</span> Skill Coefficient <span class="op">+</span> Skill Additional Dmg <span class="op">−</span> ( Defense <span class="op">−</span> Penetration ) <span class="op">×</span> 0.1   <span class="c">// 0.01 in PvP</span>
+
+<span class="c">// 3. Multipliers</span>
+Final <span class="op">=</span> C <span class="op">×</span> ( Dmg Boost <span class="op">+</span> PvE Dmg Boost <span class="op">+</span> Boss Dmg Boost <span class="op">+</span> Species Dmg Boost )
+          <span class="op">×</span> Critical Dmg Boost <span class="op">×</span> Double <span class="op">×</span> Front/Back Dmg Boost <span class="op">×</span> Skill Specialty</div>
+
+    <details>
+      <summary>Critical Damage Boost value formula</summary>
+      <div>
+        <p>Let <code>K</code> = Guaranteed Crit Ratio, <code>P</code> = Crit Chance, <code>R</code> = Boss Crit Damage Resistance, <code>D</code> = Crit Damage.</p>
+        <div class="formula" style="margin-bottom:0">E(D) <span class="op">=</span> (1.5 <span class="op">+</span> D <span class="op">−</span> R) <span class="op">×</span> [ K <span class="op">+</span> (1 <span class="op">−</span> K) <span class="op">×</span> P ] <span class="op">+</span> (1 <span class="op">−</span> K) <span class="op">×</span> (1 <span class="op">−</span> P)
+
+Value of +1% <span class="op">=</span> E(D <span class="op">+</span> 1%) <span class="op">÷</span> E(D)</div>
+      </div>
+    </details>
+
+    <h3>What counts as Pure Attack</h3>
+    <p>"Pure Attack" isn't an official stat. It is the label for attack that gets multiplied by Weapon Damage Boost:</p>
+    <ul>
+      <li>Weapon, Guard and accessory Attack</li>
+      <li>Attack stat lines</li>
+      <li>Manastone / Soulstone Attack</li>
+      <li>Closet</li>
+    </ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Tier</th><th>Flat attack stats</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b></td><td>Attack, Max Attack (Pure Attack), Attack Bonus (inside Attack Increase)</td></tr>
+        <tr><td><b>2</b></td><td>PvE Attack, Boss Attack</td></tr>
+        <tr><td><b>3</b> <span class="sub">conditional</span></td><td>Front/Back Attack, Species Attack, Critical Attack</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- CH 12 -->
+  <section class="ch" id="builds">
+    <div class="ch-head"><span class="ch-num">CH 12</span><h2>Class builds</h2></div>
+    <p class="ch-sum">Notmeter, the main site for tracking parses and DPS, now has a setup guide with builds and loadouts for every class.</p>
+    <p><a href="https://notmeter.com/?view=setup-guide"><b>Open the Notmeter setup guide →</b></a></p>
+  </section>
+
+  <footer>
+    <p>All guide content is by <b>Kanon</b>. He's live daily on <a href="https://twitch.tv/kanonxo">Twitch</a> and posts on <a href="https://youtube.com/kanonxo">YouTube</a>, so drop by with questions. Damage formula research with Aion Research Lab. The <a href="https://docs.google.com/document/d/11u4wLCG1WfL-xSka2Aze0rI9vYRa7mq3N3Gp1bt0AWY/preview">original Google Doc</a> is the source of truth and has the in-game screenshots.</p>
+  </footer>
+
+  </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  // Efficiency chart
+  var data=[
+    ["Double Chance",.60,.65],
+    ["Front/Back Dmg Boost",.57,.65],
+    ["Weapon Dmg Boost",.50,.55],
+    ["Crit Dmg Boost",.40,.60],
+    ["Damage Boost",.30,.35],
+    ["Multi-hit",.33,.33],
+    ["Perfect",.10,.10]
+  ];
+  var MAX=.7, rows=document.getElementById("effRows"), ticks=document.getElementById("effTicks");
+  data.forEach(function(d){
+    var lo=d[1]/MAX*100, hi=d[2]/MAX*100;
+    var row=document.createElement("div"); row.className="eff-row";
+    var val=d[1]===d[2]?"≈"+d[1].toFixed(2)+"%":d[1].toFixed(2)+"–"+d[2].toFixed(2)+"%";
+    row.innerHTML='<span class="nm"></span><div class="track"><div class="solid" style="width:'+lo+'%"></div><div class="range" style="left:'+lo+'%;width:'+Math.max(hi-lo,.8)+'%"></div></div><span class="val">'+val+'</span>';
+    row.querySelector(".nm").textContent=d[0];
+    rows.appendChild(row);
+  });
+  for(var t=0;t<=7;t++){var s=document.createElement("span");s.style.left=(t/7*100)+"%";s.textContent=(t/10).toFixed(1);ticks.appendChild(s);}
+
+  // Scrollspy
+  var rail=document.getElementById("rail");
+  var links=[].slice.call(rail.querySelectorAll("a"));
+  var map={}; links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));}).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){a.classList.toggle("active",a===map[id]);});
+    var a=map[id]; if(!a) return;
+    if(rail.scrollWidth>rail.clientWidth){
+      var left=a.offsetLeft-rail.clientWidth/2+a.offsetWidth/2;
+      rail.scrollTo({left:left,behavior:"smooth"});
+    }
+  }
+  function onScroll(){
+    var y=window.innerHeight*0.25, current=targets[0].id;
+    for(var i=0;i<targets.length;i++){ if(targets[i].getBoundingClientRect().top-y<=0) current=targets[i].id; }
+    setActive(current);
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
