@@ -223,7 +223,7 @@ footer p{max-width:70ch}
       <a href="#wings"><span class="n">09</span>Wings</a>
       <a href="#closet"><span class="n">10</span>Closet</a>
       <a href="#stats"><span class="n">11</span>How stats work</a>
-      <a href="#builds"><span class="n">12</span>Class builds</a>
+      <a href="#aulamus"><span class="n">12</span>Aulamus vs Kromede</a>
     </div>
   </nav>
 
@@ -235,7 +235,7 @@ footer p{max-width:70ch}
     <h1>Kanon's Aion 2 Bible</h1>
     <p class="lede">Everything that goes into character progression, from what each line on your gear does to the full damage formula. Built from Kanon's guide and organized so you can find a number fast.</p>
     <div class="meta">
-      <span>Update note <b>Oct 4, 2026</b> · synced with the doc <b>Oct 25, 2026</b></span>
+      <span>Doc last updated <b>Oct 26, 2026</b> · synced <b>Oct 30, 2026</b></span>
       <span>Author <b>Kanon</b> · <a href="https://twitch.tv/kanonxo">twitch.tv/kanonxo</a> · <a href="https://youtube.com/kanonxo">youtube.com/kanonxo</a></span>
       <span><a href="https://docs.google.com/document/d/11u4wLCG1WfL-xSka2Aze0rI9vYRa7mq3N3Gp1bt0AWY/preview">Original Google Doc</a></span>
     </div>
@@ -243,8 +243,9 @@ footer p{max-width:70ch}
 
   <section class="cheat" aria-label="Cheat sheet">
     <div class="card">
-      <h4>Damage stat value, best to worst</h4>
-      <div class="chain">Double Chance <span class="gt">&gt;</span> Front/Back Dmg Boost <span class="gt">&gt;</span> Weapon Dmg Boost <span class="gt">≈</span> Crit Dmg Boost <span class="gt">&gt;</span> Damage Boost</div>
+      <h4>Damage stat value on Global, best to worst</h4>
+      <div class="chain">Double Chance <span class="gt">&gt;</span> Front/Back Dmg Boost <span class="gt">&gt;</span> Weapon Dmg Boost <span class="gt">&gt;</span> Damage Boost <span class="gt">&gt;</span> Crit Dmg Boost</div>
+      <p style="margin:8px 0 0;font-size:14px;color:var(--muted)">Global's 50% crit cap weakens Crit Damage Boost. On Korea it ranks about even with Weapon Damage Boost, above Damage Boost.</p>
     </div>
     <div class="card">
       <h4>Flat attack, best to worst</h4>
@@ -261,7 +262,7 @@ footer p{max-width:70ch}
   </section>
 
   <h3>About this guide</h3>
-  <p>Kanon wrote this solo as a work in progress, covering the foundations of Aion 2 PvE and every system tied to character progression. The damage formulas are in Chapter 11. The October 2026 update covers the many changes for the Global release and adds Chapter 12 with links to class builds. If you spot an error or something out of date, Kanon asks that you let him know on stream.</p>
+  <p>Kanon wrote this solo as a work in progress, covering the foundations of Aion 2 PvE and every system tied to character progression. The damage formulas are in Chapter 11. The Oct 26, 2026 update adds Chapter 12, a Global comparison of the Aulamus and Kromede weapons, splits the stat priority into Korea and Global versions, and updates the Global Cogni Genus board. Kanon is testing Global stat efficiency with AionLab and plans to add Global numbers to Chapter 11. If you spot an error or something out of date, Kanon asks that you let him know on stream.</p>
 
   <h4>Author credentials</h4>
   <ul>
@@ -344,8 +345,8 @@ footer p{max-width:70ch}
     <div class="scroll"><table>
       <thead><tr><th>Weapon type</th><th class="num">Stat lines</th><th class="num">Max Amp</th></tr></thead>
       <tbody>
-        <tr><td>Dungeon weapon (Aulumus)</td><td class="num">4</td><td class="num">3</td></tr>
-        <tr><td>Extendable weapon (Khromede, Ludra)</td><td class="num">3</td><td class="num">5</td></tr>
+        <tr><td>Dungeon weapon (Aulamus)</td><td class="num">4</td><td class="num">3</td></tr>
+        <tr><td>Extendable weapon (Kromede, Ludra)</td><td class="num">3</td><td class="num">5</td></tr>
         <tr><td>Crafted weapon</td><td class="num">5</td><td class="num">1–5</td></tr>
       </tbody>
     </table></div>
@@ -353,7 +354,7 @@ footer p{max-width:70ch}
     <div class="scroll"><table>
       <thead><tr><th class="num">Tier</th><th>Name</th><th class="num">Max Amp</th><th>Amp 1 bonus</th></tr></thead>
       <tbody>
-        <tr><td class="num">1</td><td>True Dragon</td><td class="num">1</td><td class="num">Attack 10, Dmg Boost 1%</td></tr>
+        <tr><td class="num">1</td><td>True Dragon</td><td class="num">3<span class="sub">was 1 before Oct 28</span></td><td class="num">Attack 10, Dmg Boost 1%</td></tr>
         <tr><td class="num">2</td><td>Splendent True Dragon</td><td class="num">3</td><td class="num">Attack 12, Dmg Boost 1%</td></tr>
         <tr><td class="num">3</td><td>White Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
         <tr><td class="num">4</td><td>Splendent White Dragon</td><td class="num">5</td><td class="num" style="color:var(--muted)">not yet listed</td></tr>
@@ -733,7 +734,7 @@ footer p{max-width:70ch}
     <div class="scroll"><table>
       <thead><tr><th>Board</th><th>Slot 4</th><th>Slot 7</th></tr></thead>
       <tbody>
-        <tr><td><b>Cogni</b></td><td>Critical Damage Boost &gt; Damage Boost, PvE Damage Boost</td><td>Damage Tolerance, PvE Damage Tolerance &gt; Endurance</td></tr>
+        <tr><td><b>Cogni</b></td><td>Damage Boost, PvE Damage Boost, Critical Damage Boost</td><td>Damage Tolerance, PvE Damage Tolerance &gt; Endurance</td></tr>
         <tr><td><b>Fera</b></td><td>Weapon Damage Boost &gt; Damage Boost, PvE Damage Boost</td><td>Damage Tolerance, PvE Damage Tolerance &gt; Endurance</td></tr>
         <tr><td><b>Natura</b></td><td>PvE Damage Boost &gt; Multi-hit &gt; Perfect Chance</td><td>PvE Damage Tolerance &gt; Endurance</td></tr>
         <tr><td><b>Varian</b></td><td>Front/Back Damage Boost &gt; PvE Damage Boost</td><td>PvE Damage Tolerance &gt; Endurance</td></tr>
@@ -843,6 +844,7 @@ footer p{max-width:70ch}
 
     <h3>What 1% of each stat is worth</h3>
     <p>Measured at current endgame Korea on an ideal build, support buffs included. Diminishing returns mean these values will be higher on Global, where players have fewer stats. Front/Back Damage Boost starts at 0% while Crit Damage starts at 50%, so early points favor Front/Back even more.</p>
+    <div class="note warn"><span class="lbl">Korea numbers</span><p>Global values are different. Kanon and AionLab are testing them now and will publish Global numbers soon. Until then, use the Global stat order in the cheat sheet at the top.</p></div>
     <div class="eff" role="img" aria-label="Damage gained per 1% of each stat">
       <div class="eff-cap">DPS gained per +1% of the stat. Light segment is the low end, solid gold the range.</div>
       <div id="effRows"></div>
@@ -857,7 +859,7 @@ footer p{max-width:70ch}
         <tr><td><b>Weapon Damage Boost</b></td><td class="num">0.50–0.55%</td><td>Its own bucket, multiplied directly by Pure Attack, so it grows as Pure Attack grows.</td></tr>
         <tr><td><b>Critical Damage Boost</b></td><td class="num">0.40–0.60%</td><td>Starts at 50%. Classes with crit damage buffs (Gladiator, Chanter, Ranger, Assassin, Cleric) sit near 0.40–0.45%; guaranteed-crit classes can reach 0.6%. Includes 25% boss crit damage resist.</td></tr>
         <tr><td><b>Damage Boost</b></td><td class="num">0.30–0.35%</td><td>Additive with Boss, PvE and Species Damage Boost, so it dilutes fastest. Based on about 180% total after 50% boss resistance.</td></tr>
-        <tr><td><b>Multi-hit</b></td><td class="num">≈0.33%</td><td>1–4 extra hits at 5% damage each. Value measured in the 36–40% range. Exact formula placement still being tested.</td></tr>
+        <tr><td><b>Multi-hit</b></td><td class="num">≈0.33%</td><td>1–4 extra hits. Each extra hit is 5% of the damage on Korea and about 2% on Global (Global still being tested). Value measured in the 36–40% range on Korea. Exact formula placement still being tested.</td></tr>
         <tr><td><b>Perfect</b></td><td class="num">≈0.10%</td><td>Rolls your weapon's max damage. Also has a hidden ≈5% boost to Pure Attack that testing confirmed.</td></tr>
         <tr><td><b>PvP Damage Boost</b></td><td class="num">0.60%</td><td>For PvP players.</td></tr>
       </tbody>
@@ -946,10 +948,53 @@ Value of +1% <span class="op">=</span> E(D <span class="op">+</span> 1%) <span c
   </section>
 
   <!-- CH 12 -->
-  <section class="ch" id="builds">
-    <div class="ch-head"><span class="ch-num">CH 12</span><h2>Class builds</h2></div>
-    <p class="ch-sum">Notmeter, the main site for tracking parses and DPS, now has a setup guide with builds and loadouts for every class.</p>
-    <p><a href="https://notmeter.com/?view=setup-guide"><b>Open the Notmeter setup guide →</b></a></p>
+  <section class="ch" id="aulamus">
+    <div class="ch-head"><span class="ch-num">CH 12</span><h2>Aulamus vs Kromede</h2></div>
+    <p class="ch-sum">Which Global weapon to build: the Aulamus dungeon weapon or the extendable Kromede. Kanon ran the numbers with AionLab on his 180k CP Gladiator, so exact results depend on your stats and class.</p>
+    <div class="note"><span class="lbl">Short answer</span><p>Fully maxed with best-in-slot lines on both, Kromede deals slightly more damage. Aulamus pulls ahead once it has a two-line advantage: its extra Might line plus one more strong line Kromede lacks.</p></div>
+
+    <h3>The two weapons</h3>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th>Aulamus</th><th>Kromede</th></tr></thead>
+      <tbody>
+        <tr><td>Item level</td><td class="num">70</td><td class="num">86</td></tr>
+        <tr><td>Base stat lines</td><td class="num">4</td><td class="num">3</td></tr>
+        <tr><td>Max Amp</td><td class="num">3</td><td class="num">5</td></tr>
+        <tr><td>Range</td><td class="num" style="color:var(--muted)">standard</td><td class="num">+2 m <span class="sub">not counted in the DPS comparison</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Where the damage difference comes from</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Factor</th><th>Favors</th><th class="num">Damage</th></tr></thead>
+      <tbody>
+        <tr><td>131 more Attack from Amp levels</td><td>Kromede</td><td class="num">+3.61%</td></tr>
+        <tr><td>More Damage Boost from Amp levels</td><td>Kromede</td><td class="num">+0.8–0.9%</td></tr>
+        <tr><td>Extra stat line, tested as Might (29 Might = 2.9% Attack Increase)</td><td>Aulamus</td><td class="num">+1.87%</td></tr>
+        <tr><td><b>Attack and Damage Boost only</b></td><td>Kromede</td><td class="num">+4.53%</td></tr>
+        <tr><td><b>All three combined</b></td><td>Kromede</td><td class="num">+2.61%</td></tr>
+        <tr><td><b>Both at Amp 3</b>, Aulamus extra line is Might</td><td>Kromede</td><td class="num">under 1%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Kromede's lead shrinks the stronger your character gets.</p>
+
+    <h3>When Aulamus wins</h3>
+    <p>Aulamus is better if it keeps its Might advantage and also has one more of these lines that your Kromede doesn't: Damage Boost (2.8%), Weapon Damage Boost (4%), Combat Speed, or Multi-hit (likely, still being tested).</p>
+    <div class="slots">
+      <div class="slot"><h5>Amp 5 Kromede</h5><ol>
+        <li>Accuracy</li><li>Weapon Damage Boost</li><li>Combat Speed</li>
+      </ol></div>
+      <div class="slot"><h5>Amp 3 Aulamus · better</h5><ol>
+        <li>Damage Boost</li><li>Weapon Damage Boost</li><li>Combat Speed</li><li>Might</li>
+      </ol></div>
+    </div>
+    <p>In this example Aulamus wins: it matches Kromede's two damage lines and adds both Damage Boost and Might.</p>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>Since the Oct 28 update you can transfer Aulamus and Kromede into the crafted weapon of the same item level. True Dragon crafted weapons now go to Amp 3 and White Dragon to Amp 5. Aulamus stays at Amp 3 max.</li>
+      <li>Rerolling lines and pushing from Amp 3 to Amp 5 is very expensive. At base, Kromede has 3 stat lines, Aulamus 4 and crafted weapons 5.</li>
+    </ul>
   </section>
 
   <footer>
